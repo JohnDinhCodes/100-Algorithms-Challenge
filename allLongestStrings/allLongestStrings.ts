@@ -1,22 +1,19 @@
 function allLongestStrings(inputArray: string[]): string[] {
 
-    let max = 0;
-    let result = [];
+    let longestLength = 0;
+    const longestWords = [];
 
-    for (let string of inputArray) {
-        if (string.length > max) {
-            max = string.length;
+    inputArray.forEach((word: string) => {
+        longestLength = longestLength < word.length ? word.length : longestLength;
+    });
+
+    inputArray.forEach((word: string) => {
+        if (word.length === longestLength) {
+            longestWords.push(word);
         }
-    }
+    });
 
-    for (let string of inputArray) {
-        if (string.length === max) {
-            result.push(string);
-        }
-    }
-
-    return result;
-
+    return longestWords;
 }
 
 console.log(allLongestStrings(["aba", "aa", "ad", "vcd", "aba"]));
