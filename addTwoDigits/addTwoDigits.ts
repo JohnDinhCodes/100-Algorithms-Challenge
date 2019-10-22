@@ -2,11 +2,7 @@ function addTwoDigits(n: any): number {
     
     let numArr = n.toString().split("");
 
-    const result = numArr.reduce((prev, next) => {
-        return parseInt(prev + next);
-    });
-
-    return result;
+    return parseInt(numArr[0]) + parseInt(numArr[1]);
 }
 
 console.log(addTwoDigits(29));
