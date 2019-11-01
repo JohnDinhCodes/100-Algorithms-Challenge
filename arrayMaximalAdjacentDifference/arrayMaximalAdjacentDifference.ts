@@ -1,17 +1,13 @@
 function arrayMaximalAdjacentDifference(inputArray: number[]): number {
-    let max = 0;
-    inputArray.forEach((num, index) => {
-        const next = inputArray[index + 1] || null;
-        const previous = inputArray[index - 1] || null;
 
-        if (Math.abs(num - previous) > max) {
-            max = Math.abs(num - previous);
-        } else if (Math.abs(next - num) > max) {
-            max = Math.abs(next - num);
-        }
-    });
+    let maxDiff = Math.abs(inputArray[0] - inputArray[1]);
 
-    return max;
+    for (let i = 0; i < inputArray.length; i++) {
+        let absoluteDiff = Math.abs(inputArray[i - 1] - inputArray[i]);
+        maxDiff = absoluteDiff > maxDiff ? absoluteDiff: maxDiff;
+    }
+
+    return maxDiff;
 }
 
 console.log(arrayMaximalAdjacentDifference([2, 4, 1, 0]));
